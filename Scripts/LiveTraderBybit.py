@@ -2,6 +2,7 @@ import Bybit as bybit
 import pandas_ta as ta
 import time
 import math
+import datetime
 
 client = bybit.client
 print('Logged in Successfully\n')
@@ -76,10 +77,9 @@ def ExecuteCheck():
         print(f"Short | {pair} | USD {balanceUSD} | @ ${close} per {pair}")
 
     # Print indicator values
-    print(f"\nstochastic long: {stoc_long}")
-    print(f"stochastic short: {stoc_short}")
-    print(f"fast ema: {ma[i]}")
+    print(f"\nfast ema: {ma[i]}")
     print(f"slow ema: {ma_slow[i]}")
+    print(datetime.datetime.fromtimestamp(time.time()))
 
 startBalance = bybit.GetAssetBalance()
 
@@ -113,4 +113,5 @@ while True:
         ExecuteCheck() 
 
         print(f"Executed in {round(time.time() - startTime,3)} seconds\n")
+
 
